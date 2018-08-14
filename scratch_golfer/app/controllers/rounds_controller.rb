@@ -13,7 +13,7 @@ class RoundsController < ApplicationController
     else
       @rounds = Round.all
     end
-
+    render json: @rounds
   end
 
   def create

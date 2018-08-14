@@ -3,7 +3,9 @@
 <%= render "user_info" %>
 <br></br>
 <%= link_to "Check out the courses #{@user.name} has played.", user_courses_path(@user) %><br></br>
-<%= link_to "Take a look at all the rounds #{@user.name} has played.", user_rounds_path(@user) %><br></br>
+<!-- <%= link_to "Take a look at all the rounds #{@user.name} has played.", user_rounds_path(@user) %><br></br> -->
+<a href="#" class="js-show" data-id="<%=@user.id%>">Show User's Rounds</a><br></br>
+
 <% if @user.id == session[:user_id] %>
 <%= link_to "Add a round to keep your handicap accurate", new_round_path %><br></br>
 <%= link_to "Edit your profile page", edit_user_path %>
@@ -12,3 +14,13 @@
 
 <!-- Need to render index of courses using jQuery and Active Model Serialization JSON Backend. Fetch courses via
 AJAX get request, with backend rendering courses in JSON format, then appending to page. -->
+
+<script type="text/javascript" charset="utf-8">
+$(function () {
+  $(".js-show").on("click", function() {
+    $.get("/users/" + $(".js-show").attr("data-id") + "/rounds.json", function(data) {
+
+    });
+  });
+});
+</script>
