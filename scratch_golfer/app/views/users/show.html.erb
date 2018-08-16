@@ -6,6 +6,8 @@
 <!-- <%= link_to "Take a look at all the rounds #{@user.name} has played.", user_rounds_path(@user) %><br></br> -->
 <a href="#" class="js-show" data-id="<%=@user.id%>">Show User's Rounds</a><br></br>
 
+<div class="roundsContainer"></div>
+
 <% if @user.id == session[:user_id] %>
 <%= link_to "Add a round to keep your handicap accurate", new_round_path %><br></br>
 <%= link_to "Edit your profile page", edit_user_path %>
@@ -19,8 +21,21 @@ AJAX get request, with backend rendering courses in JSON format, then appending 
 $(function () {
   $(".js-show").on("click", function() {
     $.get("/users/" + $(".js-show").attr("data-id") + "/rounds.json", function(data) {
+      var rounds = ''
+      for (var i = 0; i < data.length; i++) {
+        rounds += `<div><strong>Round Number: ${i + 1}</strong></div><br>`
+        rounds += `<div>Course Name: ${data[i]["course_id"]}</div><br>`
+        rounds += `<div>Score: ${data[i]["score"]}</div><br>`
+        rounds += `<div>Putts: ${data[i]["putts"]}</div><br>`
+        //$(".round_number").append(data[i]["id"]);
+        //$(".course_name").append(data[i]["course_id"]);
+        //$(".round_score").append(data[i]["score"]);
+        //$(".round_putts").append(data[i]["putts"]);
 
+      }
+      $(".roundsContainer").append( rounds );
     });
+    event.preventDefault();
   });
 });
 </script>

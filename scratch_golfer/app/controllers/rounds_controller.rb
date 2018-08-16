@@ -10,7 +10,7 @@ class RoundsController < ApplicationController
     elsif params[:course_id]
       @course = Course.find_by_id(params[:course_id])
       @rounds = @course.rounds
-    else
+     else
       @rounds = Round.all
     end
     render json: @rounds
