@@ -13,10 +13,6 @@
 <%= link_to "Edit your profile page", edit_user_path %>
 <% end %>
 
-
-<!-- Need to render index of courses using jQuery and Active Model Serialization JSON Backend. Fetch courses via
-AJAX get request, with backend rendering courses in JSON format, then appending to page. -->
-
 <script type="text/javascript" charset="utf-8">
 $(function () {
   $(".js-show").on("click", function() {
@@ -24,14 +20,9 @@ $(function () {
       var rounds = ''
       for (var i = 0; i < data.length; i++) {
         rounds += `<div><strong>Round Number: ${i + 1}</strong></div><br>`
-        rounds += `<div>Course Name: ${data[i]["course_id"]}</div><br>`
+        rounds += `<div>Course Name: ${data[i]["course"]["name"]}</div><br>`
         rounds += `<div>Score: ${data[i]["score"]}</div><br>`
         rounds += `<div>Putts: ${data[i]["putts"]}</div><br>`
-        //$(".round_number").append(data[i]["id"]);
-        //$(".course_name").append(data[i]["course_id"]);
-        //$(".round_score").append(data[i]["score"]);
-        //$(".round_putts").append(data[i]["putts"]);
-
       }
       $(".roundsContainer").append( rounds );
     });
