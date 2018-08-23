@@ -8,21 +8,19 @@
 <br></br>
 <%= link_to "Played here? Add a round.", new_round_path %>
 
-<br></br><a href="#" class="nextCourse" data-id="<%= @course.id %>"><strong>Next Course</strong></a>
-<!-- Need to render next course (add next button) using jQuery and Active Model Serialization JSON Backend.
-Fetch and render next course via JQuery / AJAX. -->
+<br></br><a href="#" class="js-next" data-id="<%= @course.id %>">Next Course</a>
+
 
 <script type="text/javascript" charset="utf-8">
 $(function () {
-  $(".nextCourse").on("click", function() {
-    $.get("/courses/" + $(".nextCourse").attr("data-id") + ".json", function(data) {
-      for (var i = 0; i < data.length; i++) {
-        //Figure out how to get this code right to flip to next course
-        //rounds += `<div><strong>Round Number: ${i + 1}</strong></div><br>`
-        //rounds += `<div>Course Name: ${data[i]["course"]["name"]}</div><br>`
-        //rounds += `<div>Score: ${data[i]["score"]}</div><br>`
-        //rounds += `<div>Putts: ${data[i]["putts"]}</div><br>`
-      }
+  $(".js-next").on("click", function() {
+    $.get("/courses/" + `${parseInt($(".js-next").attr("data-id")) + 1}` + ".json", function(data) {
+      debugger
+        $(".courseName").html(data["name"])
+        $(".courseCity").html(data["city"])
+        $(".courseState").html(data["state"])
+        $(".courseSlope").html(data["slope"])
+        $(".courseRating").html(data["rating"])
     });
     event.preventDefault();
   });
