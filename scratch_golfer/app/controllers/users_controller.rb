@@ -2,10 +2,8 @@ class UsersController < ApplicationController
 
   def index
     if params[:course_id]
-      @course = Course.find_by(:id => params[:course_id])
-      rounds = @course.rounds
-      binding.pry
-      users = rounds.users
+      @course = Course.find_by_id(params[:course_id])
+      @users = @course.users
     else
       @users = User.all
     end

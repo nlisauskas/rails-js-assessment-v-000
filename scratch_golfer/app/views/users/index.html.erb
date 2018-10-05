@@ -12,10 +12,10 @@
 <h3>Find your fellow <em>Scratch Golfers</em> below.</h3>
 
 <% if @course.users %>
-<h4>No users have played this course yet.</h4>
-<% else %>
 <% @course.users.each do |user| %>
 <%= link_to "#{user.name} - #{user.hometown}", user_path(user) %><br></br>
 <% end %>
+<% else %>
+<h4>No users have played this course yet.</h4>
 <% end %>
 <% end %>
