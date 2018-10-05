@@ -24,7 +24,7 @@ $(function () {
         rounds += `<div>Score: ${data[i]["score"]}</div><br>`
         rounds += `<div>Putts: ${data[i]["putts"]}</div><br>`
       }
-      $(".roundsContainer").append( rounds );
+      $(".roundsContainer").html( rounds );
     });
     event.preventDefault();
   });

@@ -13,7 +13,10 @@ class RoundsController < ApplicationController
      else
       @rounds = Round.all
     end
-    render json: @rounds
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @rounds}
+    end
   end
 
   def create

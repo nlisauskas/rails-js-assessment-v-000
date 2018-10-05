@@ -4,7 +4,10 @@
 
 <%= link_to "Take a look at all of the rounds that have been played at #{@course.name}.", course_rounds_path(@course) %><br></br>
 
-<%= link_to "Take a look at all of the golfers that have played at #{@course.name}.", course_users_path(@course) %>
+<a href="#" class="js-users" data-id="<%= @course.id %>">Show Users</a><br></br>
+<div class="usersContainer"></div>
+<!-- <%= link_to "Take a look at all of the golfers that have played at #{@course.name}.", course_users_path(@course) %> -->
+
 <br></br>
 <%= link_to "Played here? Add a round.", new_round_path %>
 
@@ -13,14 +16,28 @@
 
 <script type="text/javascript" charset="utf-8">
 $(function () {
+// How do I make this button better so that it works more than once? Can I add in a previous button?
   $(".js-next").on("click", function() {
-    $.get("/courses/" + `${parseInt($(".js-next").attr("data-id")) + 1}` + ".json", function(data) {
-      debugger
+
+$.get("/courses/" + `${parseInt($(".js-next").attr("data-id")) + 1}` + ".json", function(data) {
         $(".courseName").html(data["name"])
-        $(".courseCity").html(data["city"])
-        $(".courseState").html(data["state"])
-        $(".courseSlope").html(data["slope"])
-        $(".courseRating").html(data["rating"])
+      $(".courseCity").html(data["city"])
+    $(".courseState").html(data["state"])
+   $(".courseSlope").html(data["slope"])
+    $(".courseRating").html(data["rating"])
+    });
+    event.preventDefault();
+  });
+});
+
+$(function () {
+  $(".js-users").on("click", function() {
+    $.get("/courses/" + $(".js-users").attr("data-id") + "/users.json", function(data) {
+      var users = ''
+      for (var i = 0; i < data.length; i++) {
+        users += `<div><strong>Name:</strong> ${data[i]["name"]}</div><br>`
+      }
+      $(".usersContainer").html( users );
     });
     event.preventDefault();
   });

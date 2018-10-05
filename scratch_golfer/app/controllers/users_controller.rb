@@ -3,11 +3,17 @@ class UsersController < ApplicationController
   def index
     if params[:course_id]
       @course = Course.find_by(:id => params[:course_id])
-      @users = User.all
+      rounds = @course.rounds
+      binding.pry
+      users = rounds.users
     else
       @users = User.all
     end
-  end 
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @users}
+    end
+  end
 
   def new
     @user = User.new
