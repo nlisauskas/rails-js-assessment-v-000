@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   resources :rounds
 
+  get '/users/rounds/new' => 'rounds#new'
+
   resources :users, except: :new do
     resources :rounds
     resources :courses

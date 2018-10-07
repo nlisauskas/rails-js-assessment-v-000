@@ -36,6 +36,7 @@ class UsersController < ApplicationController
     @user = User.find_by_id(params[:id])
     @user.calculate_handicap
     @user.save
+    @round = Round.new
     respond_to do |format|
       format.html { render :show }
       format.json { render json: @user}

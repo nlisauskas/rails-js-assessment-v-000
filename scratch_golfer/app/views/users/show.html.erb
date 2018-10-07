@@ -9,11 +9,32 @@
 <div class="roundsContainer"></div>
 
 <% if @user.id == session[:user_id] %>
-<%= link_to "Add a round to keep your handicap accurate", new_round_path %><br></br>
+
+<!-- Add a round via AJAX form -->
+<!-- This form should only show once you've clicked the button to show it.
+It should then submit once a user has filled it out and create a new round for them -->
+<%= link_to "Add a round", users_rounds_new_path, :remote => true %>
+
+<button type="button" class="button" data-url="/users/rounds/new">Add New Round</button>
+
 <%= link_to "Edit your profile page", edit_user_path %>
 <% end %>
 
 <script type="text/javascript" charset="utf-8">
+$(document).ready(function() {
+  $(".button").click(function(event) {
+    var $button = $(this);
+    var url = $(this).data("url")
+
+    $.get(url, function(response) {
+      console.log(response)
+      $button.before(response)
+    })
+    event.preventDefault();
+  })
+});
+
+
 $(function () {
   $(".js-show").on("click", function() {
     $.get("/users/" + $(".js-show").attr("data-id") + "/rounds.json", function(data) {

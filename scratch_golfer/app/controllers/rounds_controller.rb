@@ -1,6 +1,6 @@
 class RoundsController < ApplicationController
   def new
-    @round = Round.new
+    render :layout => false
   end
 
   def index
