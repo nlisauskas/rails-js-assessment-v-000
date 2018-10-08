@@ -13,7 +13,7 @@
 <!-- Add a round via AJAX form -->
 <!-- This form should only show once you've clicked the button to show it.
 It should then submit once a user has filled it out and create a new round for them -->
-<%= link_to "Add a round", users_rounds_new_path, class: "add-round" :remote => true %><br></br>
+<%= link_to "Add a round", users_rounds_new_path, class: "add-round", :remote => true %><br></br>
 
 <%= link_to "Edit your profile page", edit_user_path %>
 <% end %>
