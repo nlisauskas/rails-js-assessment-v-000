@@ -2,7 +2,7 @@ class RoundsController < ApplicationController
   def new
   	respond_to do |format|
   		format.js {render plain: "alert!"}
-  		format.html {render :new}
+  		format.html {render :new, :layout => false}
   	end
   end
 
