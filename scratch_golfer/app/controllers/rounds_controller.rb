@@ -1,6 +1,9 @@
 class RoundsController < ApplicationController
   def new
-    render :layout => false
+  	respond_to do |format|
+  		format.js
+  		format.html {render :new, :layout => false}
+  	end
   end
 
   def index
