@@ -1,10 +1,10 @@
 class RoundsController < ApplicationController
   def new
-	respond_to do |f|
-		f.js {render :plain => ‘alert!’}
-		f.html {render :layout => false}
-	end
-end
+  	respond_to do |f|
+  		f.js {render :plan => ‘alert!’}
+  		f.html {render :layout => false}
+  	end
+  end
 
   def index
     if params[:user_id]
