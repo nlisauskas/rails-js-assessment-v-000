@@ -1,7 +1,7 @@
 class RoundsController < ApplicationController
   def new
   	respond_to do |f|
-  		f.js {render :plan => ‘alert!’}
+  		f.js {render :plain => ‘alert!’}
   		f.html {render :layout => false}
   	end
   end
