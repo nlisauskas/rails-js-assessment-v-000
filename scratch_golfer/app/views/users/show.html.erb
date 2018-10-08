@@ -19,19 +19,6 @@ It should then submit once a user has filled it out and create a new round for t
 <% end %>
 
 <script type="text/javascript" charset="utf-8">
-$(document).ready(function() {
-  $(".button").click(function(event) {
-    var $button = $(this);
-    var url = $(this).data("url")
-
-    $.get(url, function(response) {
-      console.log(response)
-      $button.before(response)
-    })
-    event.preventDefault();
-  })
-});
-
 
 $(function () {
   $(".js-show").on("click", function() {
