@@ -35,15 +35,15 @@ class RoundsController < ApplicationController
   end
 
   def show
-    @round = Round.find_by(params[:id])
+    @round = Round.find_by_id(params[:id])
   end
 
   def edit
-    @round = Round.find_by(params[:id])
+    @round = Round.find_by_id(params[:id])
   end
 
   def update
-    @round = Round.find_by(params[:id])
+    @round = Round.find_by_id(params[:id])
     @round.update(round_params)
     @round.save
     @user = User.find_by(session[:user_id])
