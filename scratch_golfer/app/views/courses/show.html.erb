@@ -17,6 +17,8 @@
 <script type="text/javascript" charset="utf-8">
 $(function () {
 // How do I make this button better so that it works more than once? Can I add in a previous button?
+
+// Move to JS file even though this works.
   $(".js-next").on("click", function() {
 
 $.get("/courses/" + `${parseInt($(".js-next").attr("data-id")) + 1}` + ".json", function(data) {
@@ -28,17 +30,15 @@ $.get("/courses/" + `${parseInt($(".js-next").attr("data-id")) + 1}` + ".json", 
     });
     event.preventDefault();
   });
-});
 
-$(function () {
   $(".js-users").on("click", function() {
-    $.get("/courses/" + $(".js-users").attr("data-id") + "/users.json", function(data) {
+    $.get("/courses/" + $(".js-users").attr("data-id") + "/users", function(data) {
       var users = ''
       for (var i = 0; i < data.length; i++) {
         users += `<div><strong>Name:</strong> ${data[i]["name"]}</div><br>`
       }
       $(".usersContainer").html( users );
-    });
+    }, "json");
     event.preventDefault();
   });
 });
