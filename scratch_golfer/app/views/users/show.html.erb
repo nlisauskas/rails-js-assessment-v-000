@@ -5,7 +5,7 @@
 <%= link_to "Check out the courses #{@user.name} has played.", user_courses_path(@user) %><br></br>
 <!-- <%= link_to "Take a look at all the rounds #{@user.name} has played.", user_rounds_path(@user) %><br></br> -->
 <a href="#" class="js-show" data-id="<%=@user.id%>">Show User's Rounds</a><br></br>
-
+<div class="new_round_container"></div>
 <div class="roundsContainer"></div>
 
 <% if @user.id == session[:user_id] %>

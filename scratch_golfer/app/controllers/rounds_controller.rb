@@ -28,7 +28,7 @@ class RoundsController < ApplicationController
     if @round.save
       @user = User.find_by(session[:user_id])
       @user.calculate_handicap
-      redirect_to @round
+      render text: true
     else
       render :new
     end

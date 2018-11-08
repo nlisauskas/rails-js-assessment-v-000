@@ -13,31 +13,27 @@
 <% end %>
 
 <script type="text/javascript">
-      $(".new_round").on("submit", function(event) {
+      $(".new_round").submit(function(event) {
           event.preventDefault();
 
+          var $form = $(this);
+          data = $form.serialize();
 
-        var formData = {
-          'score' : $('input[id=round_score]').val(),
-          'putts' : $('input[id=round_putts]').val(),
-          'course_id' : $('input[id=round_course_id]').val()
-        };
-              debugger // Need to determine how to pull the round_course_id data into the form.
         $.ajax({
           type : 'POST',
           url  :  '/rounds',
-          data :  formData,
-          dataType : 'json',
-          encode: true
+          data :  data,
+          encode : true
         })
 
         .done(function(data) {
-
               // log data to the console so we can see
               console.log(data);
 
-              // here we will handle errors and validation messages
-          });
+                $(".new_round").hide();
+                $(".new_round_container").html("Your round has submitted successfully!")
+                // Question: Why can't I render data via my controller? It wants to refresh.
 
+          });
       });
 </script>

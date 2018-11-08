@@ -3,26 +3,20 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Project Specs:
+[X] Must have a Rails Backend and new requirements implemented through JavaScript.
+[ ] Makes use of ES6 features as much as possible(e.g Arrow functions, Let & Const, Constructor Functions)
+[ ] Must translate the JSON responses into Javascript Model Objects using either ES6 class or constructor syntax.
+[ ] Must render at least one index page (index resource - 'list of things') via JavaScript and an Active Model Serialization JSON Backend.
+[ ] Must render at least one show page (show resource - 'one specific thing') via JavaScript and an Active Model Serialization JSON Backend.
+[ ] Your Rails application must reveal at least one `has-many` relationship through JSON that is then rendered to the page.
+[X] Must use your Rails application and Javascript to render a form for creating a resource that submits dynamically.
+[X] Be able to explain how serializers work.
+[ ] Review all / almost all jQuery functions in case you need to use them during live code.
+[X] Remove remote: true from this application.
+[X] Include at least one has_many relationship in information rendered via JSON and appended to the DOM.  This means we need to take advantage of having a `has_many` in a serializer, and pull the related data from a JSON response.
+[ ] Use your Rails API and a form to create a resource and render the response without a page refresh.  A form needs to be submitted with an AJAX request. The controller needs to create an object, then return a JSON representation of the object that you append to the DOM.
+[ ] Translate JSON responses into js model objects.  You can use either ES6 class syntax or JS constructor function syntax to make this happen. Either way is fine.
+[ ] At least one of the js model objects must have at least one method added by your code to the prototype.  Again, this can be in the form  `YourObject.prototype.yourMethod = function() {...}`  or  `class YourClass {  yourMethod(){  ...  }  }`  depending on whether you're using a constructor function or ES6 class syntax, respectively.
+[ ] Re-factor entire application to remove unnecessary code, improve styling, and be able to explain everything.
+[ ] Must translate the JSON responses into JavaScript Model Objects using either ES6 class or constructor syntax. The Model Objects must have at least one method on the prototype. Formatters work really well for this.
