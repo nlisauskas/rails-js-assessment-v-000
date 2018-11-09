@@ -25,13 +25,16 @@ class RoundsController < ApplicationController
   def create
     @round = Round.new(round_params)
     @round.user_id = session[:user_id]
-    if @round.save
-      @user = User.find_by(session[:user_id])
-      @user.calculate_handicap
-      render text: true
-    else
-      render :new
-    end
+      respond_to do |format|
+          if @round.save
+            @user = User.find_by(session[:user_id])
+            @user.calculate_handicap
+            format.json { render json: @round }
+          else
+            format.html { render action: "new" }
+            format.json { render json: @round.errors, status: :unprocessable_entity }
+          end
+        end
   end
 
   def show

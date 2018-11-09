@@ -14,6 +14,8 @@
 <!-- This form should only show once you've clicked the button to show it.
 It should then submit once a user has filled it out and create a new round for them -->
 <a href="#" class="add-round">Add a round</a><br></br>
+<div id="round_info">
+</div>
 
 
 <%= link_to "Edit your profile page", edit_user_path %>
@@ -30,10 +32,15 @@ It should then submit once a user has filled it out and create a new round for t
           rounds += `<div>Score: ${data[i]["score"]}</div><br>`
           rounds += `<div>Putts: ${data[i]["putts"]}</div><br>`
         }
-        $(".roundsContainer").html( rounds );
+        $(".roundsContainer").html( rounds + `<button id="hide_rounds">Hide Rounds</button>`);
+        $("#hide_rounds").on("click", function(){
+          $(".roundsContainer").html("")
+      });
       });
       event.preventDefault();
     });
+
+
 
     $(".add-round").on("click", function() {
       $(".add-round").after("<br></br><%= j render partial: 'rounds/form' %>");
@@ -43,8 +50,6 @@ It should then submit once a user has filled it out and create a new round for t
     // Form related javascript found in form partial file.
 
   });
-
-  // implement the form submission and implement a has many relationship coming back through as a jerialized response. use the has many respone
   // Create a model object in javascript (es-6 class or es-5 constructors)
 
 </script>

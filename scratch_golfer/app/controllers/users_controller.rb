@@ -33,9 +33,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by_id(params[:id])
-    @user.calculate_handicap
+    @user = User.find_or_create_by(id: params[:id])
     @user.save
+    if @user.rounds.size > 0
+      @user.calculate_handicap
+    end
     @round = Round.new
     respond_to do |format|
       format.html { render :show }

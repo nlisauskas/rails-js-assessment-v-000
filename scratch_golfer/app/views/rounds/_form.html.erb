@@ -23,15 +23,17 @@
           type : 'POST',
           url  :  '/rounds',
           data :  data,
-          encode : true
+          datatype: "json",
+          encode : true,
+          success: function(data) {
+            $("#round_info").append(`You've successfully added your round at ${data["course"]["name"]} where you shot a ${data["score"]}!`);
+            $(".new_round").hide();
+          }
         })
 
         .done(function(data) {
               // log data to the console so we can see
               console.log(data);
-
-                $(".new_round").hide();
-                $(".new_round_container").html("Your round has submitted successfully!")
                 // Question: Why can't I render data via my controller? It wants to refresh.
 
           });
