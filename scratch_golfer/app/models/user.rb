@@ -25,8 +25,7 @@ end
     differential_array
   end
 
- def self.calculate_handicap
-
+ def calculate_handicap
    if self.rounds.size < 5
      self.handicap = 1000
    elsif self.rounds.size >=5 && self.rounds.size <= 10

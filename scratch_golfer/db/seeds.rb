@@ -6,9 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 Course.create(
-[{name: 'Naples Grande - Yellow', city: 'Naples', state: 'FL', slope: 70.6, rating: 129},
-  {name: 'Pebble Beach', city: 'San Francisco', state: 'CA', slope: 70.8, rating: 134},
-  {name: 'TPC Sawgrass', city: 'Jacksonville', state: 'FL', slope: 71.9, rating: 138},
+[{name: 'Naples Grande - Yellow', city: 'Naples', state: 'FL', slope: 113, rating: 71},
+  {name: 'Pebble Beach', city: 'San Francisco', state: 'CA', slope: 113, rating: 71},
+  {name: 'TPC Sawgrass', city: 'Jacksonville', state: 'FL', slope: 113, rating: 71},
 ]
 )
 

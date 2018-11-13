@@ -55,7 +55,7 @@ class RoundsController < ApplicationController
   end
 
   def destroy
-    @round = Round.find_by(params[:id])
+    @round = Round.find_by_id(params[:id])
     if @round.user_id == session[:user_id]
       @round.destroy
       redirect_to user_path(session[:user_id])

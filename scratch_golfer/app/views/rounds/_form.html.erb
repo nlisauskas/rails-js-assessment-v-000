@@ -13,11 +13,25 @@
 <% end %>
 
 <script type="text/javascript">
+
       $(".new_round").submit(function(event) {
           event.preventDefault();
 
           var $form = $(this);
           data = $form.serialize();
+
+          class Round {
+            constructor(courseName, score, putts) {
+              this.courseName = courseName;
+              this.score = score;
+              this.putts = putts;
+            }
+
+            roundCreated() {
+              return `You've successfully added your round at ${this.courseName} where you shot a ${this.score}!`
+            }
+              //prototype method
+          }
 
         $.ajax({
           type : 'POST',
@@ -26,7 +40,9 @@
           datatype: "json",
           encode : true,
           success: function(data) {
-            $("#round_info").append(`You've successfully added your round at ${data["course"]["name"]} where you shot a ${data["score"]}!`);
+            let round = new Round(data["course"]["name"], data["score"], data["putts"]);
+            debugger
+            $("#round_info").append(round.roundCreated());
             $(".new_round").hide();
           }
         })
@@ -38,4 +54,6 @@
 
           });
       });
+
+
 </script>
