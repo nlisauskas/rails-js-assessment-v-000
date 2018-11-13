@@ -20,6 +20,6 @@ Project Specs:
 [X] Re-factor entire application to remove unnecessary code, improve styling, and be able to explain everything
 [X] Must translate the JSON responses into JavaScript Model Objects using either ES6 class or constructor syntax. The Model Objects must have at least one method on the prototype. Formatters work really well for this.
 -- Achieved in user's show page when adding a new round.
-[ ] Makes use of ES6 features as much as possible(e.g Arrow functions, Let & Const, Constructor Functions)
-[ ] At least one of the js model objects must have at least one method added by your code to the prototype.  Again, this can be in the form  `YourObject.prototype.yourMethod = function() {...}`  or  `class YourClass {  yourMethod(){  ...  }  }`  depending on whether you're using a constructor function or ES6 class syntax, respectively.
--- Add a method to round prototype on user's show page.
+[X] Makes use of ES6 features as much as possible(e.g Arrow functions, Let & Const, Constructor Functions)
+[X] At least one of the js model objects must have at least one method added by your code to the prototype.  Again, this can be in the form  `YourObject.prototype.yourMethod = function() {...}`  or  `class YourClass {  yourMethod(){  ...  }  }`  depending on whether you're using a constructor function or ES6 class syntax, respectively.
+-- Added a method to round prototype on user's show page (seen in new round form partial)
