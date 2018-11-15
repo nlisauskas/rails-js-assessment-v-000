@@ -7,6 +7,10 @@ class CoursesController < ApplicationController
     else
       @courses = Course.all
     end
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @courses}
+    end
   end
 
   def new

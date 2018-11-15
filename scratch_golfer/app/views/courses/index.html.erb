@@ -13,3 +13,46 @@
 <% @courses.uniq.each do |course| %>
 <%= link_to "#{course.name} - #{course.city}, #{course.state}", course_path(course) %><br></br>
 <% end %>
+<button class="js-courses-alphabetically">Show Courses Alphabetically by State</button><br></br>
+<div class="alphabetical_courses"></div>
+
+
+
+<script type="text/javascript">
+  $(".js-courses-alphabetically").on("click", function() {
+    $.get("/courses.json", function(data) {
+        data.sort(function(a, b) {
+          var stateA = a.state.toUpperCase(); // ignore upper and lowercase
+          var stateB = b.state.toUpperCase(); // ignore upper and lowercase
+          if (stateA < stateB) {
+            return -1;
+          }
+          if (stateA > stateB) {
+            return 1;
+          }
+
+          if (a.city.toUpperCase() < b.city.toUpperCase()) {
+            return -1;
+          }
+          if (a.city.toUpperCase() > b.city.toUpperCase()) {
+            return 1;
+          }
+  // names must be equal
+  return 0;
+      });
+
+      var sortedCoursesHTML = ''
+
+      for (var i = 0; i < data.length; i++) {
+        sortedCoursesHTML += `<h5>Course Number: ${i + 1}</h5>
+        <p>Course Name: ${data[i]["name"]}</p>
+        <p>State: ${data[i]["state"]}</p>
+        <p>City: ${data[i]["city"]}</p><br></br>`
+      }
+
+      $(".alphabetical_courses").html( sortedCoursesHTML);
+    });
+    event.preventDefault();
+    //show courses alphabetical by state
+  })
+</script>

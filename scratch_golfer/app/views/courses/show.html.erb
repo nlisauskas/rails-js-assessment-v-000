@@ -54,8 +54,8 @@ $.get("/courses/" + `${data_id - 1}` + ".json", function(data) {
   });
 
   $(".js-users").on("click", function() {
-    $.get("/courses/" + data_id + "/users", function(data) {
-      const unique = [...new Set(data.map(item => item.name))];
+    $.get("/courses/" + data_id , function(data) {
+      const unique = [...new Set(data.users.map(item => item.name))];
 
       let users = ''
       for (var i = 0; i < unique.length; i++) {
